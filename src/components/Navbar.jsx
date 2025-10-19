@@ -16,14 +16,18 @@ function Navbar() {
     },
     {
       id: 3,
-      text: "Portfolio",
+      text: "Project",
     },
     {
       id: 4,
       text: "Experiance",
     },
-    {
+      {
       id: 5,
+      text: "Resume",
+    },
+    {
+      id: 6,
       text: "Contact",
     },
   ];
