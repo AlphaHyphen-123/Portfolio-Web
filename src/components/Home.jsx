@@ -2,10 +2,11 @@ import React from "react";
 
 import pic from "../../public/photo.avif";
 
-import { FaSquareFacebook } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
-import { IoLogoYoutube } from "react-icons/io";
-import { FaTelegram } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
+
+import { SiLeetcode } from "react-icons/si";
 
 import { SiMongodb } from "react-icons/si";
 import { SiExpress } from "react-icons/si";
@@ -37,11 +38,7 @@ function Home() {
             </div>
             <br />
             <p className="text-sm md:text-md text-justify">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Quisquam, recusandae consequatur. Accusamus sint libero eligendi
-              laborum fuga repudiandae? Asperiores tempore eos animi dolores
-              corrupti! Sint quos, mollitia architecto aliquam nesciunt, optio
-              cum delectus sit voluptatum aut ratione quaerat veniam aperiam!
+              I’m a passionate and detail-oriented Computer Science Engineering student with a strong foundation in Java, Data Structures & Algorithms, and full-stack web development using the MERN stack. I enjoy turning ideas into real-world projects that solve meaningful problems. My goal is to build scalable, user-friendly applications while constantly learning new technologies. I’m always open to exciting opportunities that challenge my creativity, sharpen my technical skills, and help me grow as a developer.
             </p>
             <br />
             {/* social media icons */}
@@ -49,24 +46,25 @@ function Home() {
               <div className="  space-y-2">
                 <h1 className="font-bold text-center ">Available on</h1>
                 <ul className="flex space-x-5">
+
                   <li>
-                    <a href="https://www.facebook.com/" target="_blank">
-                      <FaSquareFacebook className="text-2xl cursor-pointer" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.linkedin.com/" target="_blank">
+                    <a href="https://www.linkedin.com/in/shivam-sen-607821281/" target="_blank">
                       <FaLinkedin className="text-2xl cursor-pointer" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.youtube.com/" target="_blank">
-                      <IoLogoYoutube className="text-2xl cursor-pointer" />
+                    <a href="https://github.com/AlphaHyphen-123" target="_blank">
+                      <FaGithub className="text-2xl cursor-pointer" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://t.me/" target="_blank">
-                      <FaTelegram className="text-2xl cursor-pointer" />
+                    <a href="https://leetcode.com/u/Shivamleetcodetech/" target="_blank">
+                      <SiLeetcode className="text-2xl cursor-pointer" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.instagram.com/shiva_15523/?hl=en" target="_blank">
+                      <FaInstagram className="text-2xl cursor-pointer" />
                     </a>
                   </li>
                 </ul>

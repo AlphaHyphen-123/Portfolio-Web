@@ -1,92 +1,96 @@
-import axios from "axios";
 import React from "react";
-import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
+import { useForm, ValidationError } from "@formspree/react";
 
 function Contact() {
-  const {
-    register,
-    handleSubmit,
+  const [state, handleSubmit] = useForm("myznvgnz"); // 👈 अपना Formspree form ID
 
-    formState: { errors },
-  } = useForm();
-
-  const onSubmit = async (data) => {
-    const userInfo = {
-      name: data.name,
-      email: data.email,
-      message: data.message,
-    };
-    try {
-      await axios.post("https://getform.io/f/raeqjora", userInfo);
-      toast.success("Your message has been sent");
-    } catch (error) {
-      console.log(error);
-      toast.error("Something went wrong");
-    }
-  };
-  return (
-    <>
-      <div
-        name="Contact"
-        className="max-w-screen-2xl container mx-auto px-4 md:px-20 my-16"
-      >
-        <h1 className="text-3xl font-bold mb-4">Contact me</h1>
-        <span>Please fill out the form below to contact me</span>
-        <div className=" flex flex-col items-center justify-center mt-5">
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            // action="https://getform.io/f/raeqjora"
-            // method="POST"
-            className="bg-slate-200 w-96 px-8 py-6 rounded-xl"
-          >
-            <h1 className="text-xl font-semibold mb-4">Send Your Message</h1>
-            <div className="flex flex-col mb-4">
-              <label className="block text-gray-700">FullName</label>
-              <input
-                {...register("name", { required: true })}
-                className="shadow rounded-lg appearance-none border  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Enter your fullname"
-              />
-              {errors.name && <span>This field is required</span>}
-            </div>
-            <div className="flex flex-col mb-4">
-              <label className="block text-gray-700">Email Address</label>
-              <input
-                {...register("email", { required: true })}
-                className="shadow rounded-lg appearance-none border  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="email"
-                name="email"
-                type="text"
-                placeholder="Enter your email address"
-              />
-              {errors.email && <span>This field is required</span>}
-            </div>
-            <div className="flex flex-col mb-4">
-              <label className="block text-gray-700">Message</label>
-              <textarea
-                {...register("message", { required: true })}
-                className="shadow rounded-lg appearance-none border  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="message"
-                name="message"
-                type="text"
-                placeholder="Enter your Query"
-              />
-              {errors.message && <span>This field is required</span>}
-            </div>
-            <button
-              type="submit"
-              className="bg-black text-white rounded-xl px-3 py-2 hover:bg-slate-700 duration-300"
-            >
-              Send
-            </button>
-          </form>
-        </div>
+  if (state.succeeded) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+        <p className="text-green-600 text-xl font-semibold">
+          ✅ Thanks! Your message has been sent.
+        </p>
       </div>
-    </>
+    );
+  }
+
+  return (
+    <div
+      name="Contact"
+      className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-4"
+    >
+      <div className="text-center mb-8">
+        <h1 className="text-4xl font-bold mb-2 text-gray-800">Contact Me</h1>
+        <p className="text-gray-600">
+          Please fill out the form below to get in touch with me.
+        </p>
+      </div>
+
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white shadow-lg rounded-2xl w-full max-w-md px-8 py-8"
+      >
+        <h2 className="text-2xl font-semibold text-center mb-6">
+          Send Your Message
+        </h2>
+
+        {/* Name */}
+        <div className="mb-5">
+          <label htmlFor="name" className="block text-gray-700 mb-2">
+            Full Name
+          </label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            placeholder="Enter your full name"
+            required
+          />
+        </div>
+
+        {/* Email */}
+        <div className="mb-5">
+          <label htmlFor="email" className="block text-gray-700 mb-2">
+            Email Address
+          </label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            placeholder="Enter your email"
+            required
+          />
+          <ValidationError prefix="Email" field="email" errors={state.errors} />
+        </div>
+
+        {/* Message */}
+        <div className="mb-5">
+          <label htmlFor="message" className="block text-gray-700 mb-2">
+            Message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            placeholder="Write your message here..."
+            required
+          />
+          <ValidationError prefix="Message" field="message" errors={state.errors} />
+        </div>
+
+        {/* Button */}
+        <button
+          type="submit"
+          disabled={state.submitting}
+          className="w-full bg-indigo-600 text-white font-semibold rounded-lg py-2 hover:bg-indigo-700 transition duration-300"
+        >
+          {state.submitting ? "Sending..." : "Send"}
+        </button>
+      </form>
+    </div>
   );
 }
 

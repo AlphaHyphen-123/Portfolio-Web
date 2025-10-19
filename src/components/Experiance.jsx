@@ -4,8 +4,8 @@ import css from "../../public/css.jpg";
 import java from "../../public/java.png";
 import javascript from "../../public/javascript.png";
 import oracle from "../../public/oracle.png";
-import spring from "../../public/spring.png";
-import springBoot from "../../public/springBoot.jpg";
+import mySql from "../../public/Mysql.png";
+import mern from "../../public/mernlogo.webp";
 function Experiance() {
   const cardItem = [
     {
@@ -35,13 +35,13 @@ function Experiance() {
     },
     {
       id: 6,
-      logo: spring,
-      name: "Spring",
+      logo: mySql,
+      name: "Mysql",
     },
     {
       id: 7,
-      logo: springBoot,
-      name: "Spring Boot",
+      logo: mern,
+      name: "MERN",
     },
   ];
   return (
@@ -52,7 +52,7 @@ function Experiance() {
       <div>
         <h1 className="text-3xl font-bold mb-5">Experiance</h1>
         <p className="  ">
-          I've more than 2 years of experiance in below technologies.
+          I've 1 years of experiance in below technologies.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-7 my-3">
           {cardItem.map(({ id, logo, name }) => (
