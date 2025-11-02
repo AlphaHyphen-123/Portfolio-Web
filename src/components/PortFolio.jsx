@@ -33,8 +33,8 @@ export default function Portfolio() {
       description:
         "A modern blogging platform with rich text editor, user authentication, comments, and category-based content organization.",
       technologies: ["React", "Express", "Node.js", "MongoDB"],
-      videoLink: "https://blog-web-iota-lemon.vercel.app/",
-      sourceLink: "https://github.com/AlphaHyphen-123/BlogWeb",
+      videoLink: "https://github.com/AlphaHyphen-123/ChatWebApp",
+      sourceLink: "https://github.com/AlphaHyphen-123/ChatWebApp",
       image: Image3,
     },
   ];
